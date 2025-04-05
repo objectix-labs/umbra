@@ -8,6 +8,8 @@ environment:
   flutter: ">=1.17.0"
 
 dependencies:
+  cryptography_plus: ^2.7.0
+  cryptography_flutter: ^2.3.2
   flutter:
     sdk: flutter
 
