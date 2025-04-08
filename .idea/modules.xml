@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/packages/umbra_core/melos_umbra_core.iml" filepath="$PROJECT_DIR$/packages/umbra_core/melos_umbra_core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/packages/umbra_x3dh/melos_umbra_x3dh.iml" filepath="$PROJECT_DIR$/packages/umbra_x3dh/melos_umbra_x3dh.iml" />
+      <module fileurl="file://$PROJECT_DIR$/melos_umbra.iml" filepath="$PROJECT_DIR$/melos_umbra.iml" />
+    </modules>
+  </component>
+</project>
