@@ -9,7 +9,7 @@ environment:
 
 dependencies:
   cryptography_plus: ^2.7.0
-  cryptography_flutter: ^2.3.2
+  cryptography_flutter_plus: ^2.3.2
   flutter:
     sdk: flutter
 
