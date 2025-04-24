@@ -10,6 +10,7 @@ environment:
 dependencies:
   cryptography_plus: ^2.7.0
   cryptography_flutter_plus: ^2.3.2
+  email_validator: ^3.0.0
   equatable: ^2.0.0
   flutter:
     sdk: flutter

@@ -5,7 +5,10 @@ import 'package:equatable/equatable.dart';
 /// key and a public signing key. The DH key is used for secure communication,
 /// while the signing key is used for authentication.
 class IdentityKey extends Equatable {
+  /// Diffie-Hellman public key used for secure communication.
   final SimplePublicKey key;
+
+  /// Signing public key used for authentication.
   final SimplePublicKey signingKey;
 
   const IdentityKey(this.key, this.signingKey);

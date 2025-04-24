@@ -6,7 +6,10 @@ import 'package:umbra_core/umbra_core.dart';
 /// and a signing key pair. The DH key pair is used for secure communication,
 /// while the signing key pair is used for authentication.
 class IdentityKeyPair extends Equatable {
+  /// Diffie-Hellman key pair used for secure communication.
   final SimpleKeyPair keyPair;
+
+  /// Signing key pair used for authentication.
   final SimpleKeyPair signingKeyPair;
 
   const IdentityKeyPair(this.keyPair, this.signingKeyPair);
