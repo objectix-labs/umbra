@@ -4,7 +4,7 @@ import 'package:umbra_core/umbra_core.dart';
 /// Provides functions for generating signatures on binary data
 /// and verifying them.
 class SignatureService {
-  final _ed25519 = Ed25519();
+  final Ed25519 _ed25519 = Ed25519();
 
   // The constructor initializes the service.
   SignatureService();
