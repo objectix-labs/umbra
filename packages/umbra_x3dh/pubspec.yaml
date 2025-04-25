@@ -2,12 +2,17 @@ name: umbra_x3dh
 description: "Umbra X3DH implementation"
 version: 0.0.1
 homepage: https://github.com/objectix-labs/umbra
+publish_to: none # Remove this line if you wish to publish to pub.dev
 
 environment:
   sdk: ^3.7.2
   flutter: ">=1.17.0"
 
 dependencies:
+  umbra_core:
+    path: ../umbra_core
+  cryptography_plus: ^2.7.0
+  cryptography_flutter_plus: ^2.3.2
   flutter:
     sdk: flutter
 
