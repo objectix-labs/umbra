@@ -2,6 +2,8 @@ import 'package:cryptography_plus/cryptography_plus.dart';
 import 'package:equatable/equatable.dart';
 import 'dart:convert';
 
+import 'package:umbra_core/umbra_core.dart';
+
 /// Represents an identity key pair, which consists of a public DH
 /// key and a public signing key. The DH key is used for secure communication,
 /// while the signing key is used for authentication.
@@ -16,18 +18,15 @@ class IdentityKey extends Equatable {
 
   Map<String, dynamic> toJson() {
     return {
-      'key': base64Encode(key.bytes),
-      'signingKey': base64Encode(signingKey.bytes),
+      'key': simplePublicKeyToJson(key),
+      'signingKey': simplePublicKeyToJson(signingKey),
     };
   }
 
   factory IdentityKey.fromJson(Map<String, dynamic> json) {
     return IdentityKey(
-      SimplePublicKey(base64Decode(json['key']), type: KeyPairType.x25519),
-      SimplePublicKey(
-        base64Decode(json['signingKey']),
-        type: KeyPairType.ed25519,
-      ),
+      simplePublicKeyFromJson(json['key']),
+      simplePublicKeyFromJson(json['signingKey']),
     );
   }
 
