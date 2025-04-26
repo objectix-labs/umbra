@@ -26,5 +26,8 @@ jobs:
           run-bootstrap: true
           include-private: true
 
+      - name: Run analysis
+        run: melos run analyze
+
       - name: Run tests
         run: melos run test
