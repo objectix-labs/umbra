@@ -24,8 +24,16 @@ class UserAddress extends Equatable {
     }
   }
 
-  @override
-  String toString() => name != null ? "$address <$name>" : address;
+  Map<String, dynamic> toJson() {
+    return {'address': address, 'name': name};
+  }
+
+  factory UserAddress.fromJson(Map<String, dynamic> json) {
+    return UserAddress(
+      json['address'] as String,
+      displayName: json['name'] as String?,
+    );
+  }
 
   @override
   List<Object?> get props => [address, name];

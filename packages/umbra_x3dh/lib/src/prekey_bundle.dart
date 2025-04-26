@@ -4,7 +4,7 @@ import "package:umbra_core/umbra_core.dart";
 class PrekeyBundle {
   final IdentityKey identityKey;
   final SimplePublicKey preKey;
-  final SimplePublicKey oneTimePreKey;
+  final SimplePublicKey? oneTimePreKey;
   final Signature preKeySignature;
 
   PrekeyBundle({
@@ -19,7 +19,7 @@ class PrekeyBundle {
       'identityKey': identityKey.toJson(),
       'preKey': preKey.toJson(),
       'preKeySignature': preKeySignature.toJson(),
-      'oneTimePreKey': oneTimePreKey.toJson(),
+      'oneTimePreKey': oneTimePreKey?.toJson(),
     };
   }
 
@@ -28,7 +28,10 @@ class PrekeyBundle {
       identityKey: IdentityKey.fromJson(json['identityKey']),
       preKey: SimplePublicKeyJson.fromJson(json['preKey']),
       preKeySignature: SignatureJson.fromJson(json['preKeySignature']),
-      oneTimePreKey: SimplePublicKeyJson.fromJson(json['oneTimePreKey']),
+      oneTimePreKey: parseIfNotNull(
+        json['oneTimePreKey'],
+        SimplePublicKeyJson.fromJson,
+      ),
     );
   }
 }

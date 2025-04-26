@@ -54,3 +54,8 @@ extension SignatureJson on Signature {
     return Signature(bytes, publicKey: publicKey);
   }
 }
+
+T? parseIfNotNull<T>(dynamic value, T Function(Map<String, dynamic>) parser) {
+  if (value == null) return null;
+  return parser(value as Map<String, dynamic>);
+}

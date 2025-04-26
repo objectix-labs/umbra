@@ -1,6 +1,5 @@
 import 'package:cryptography_plus/cryptography_plus.dart';
 import 'package:equatable/equatable.dart';
-import 'dart:convert';
 
 import 'package:umbra_core/umbra_core.dart';
 
