@@ -7,3 +7,5 @@ packages:
 scripts:
   analyze:
     exec: dart analyze .
+  test:
+    exec: flutter test --reporter expanded

@@ -24,6 +24,7 @@ jobs:
         uses: bluefireteam/melos-action@v3
         with:
           run-bootstrap: true
+          include-private: true
 
       - name: Run tests
         run: melos run test
