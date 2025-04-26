@@ -20,11 +20,10 @@ jobs:
           channel: stable
           flutter-version: 3.29.3
 
-      - name: Install Melos
-        run: dart pub global activate melos
-
-      - name: Bootstrap packages
-        run: melos bootstrap
+      - name: Activate Melos
+        uses: bluefireteam/melos-action@v3
+        with:
+          run-bootstrap: true
 
       - name: Run tests
         run: melos run test
