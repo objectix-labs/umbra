@@ -1,4 +1,4 @@
-name: Melos Tests
+name: Umbra Automated Tests
 
 on:
   push:
