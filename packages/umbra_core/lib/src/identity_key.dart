@@ -17,16 +17,13 @@ class IdentityKey extends Equatable {
   const IdentityKey(this.key, this.signingKey);
 
   Map<String, dynamic> toJson() {
-    return {
-      'key': simplePublicKeyToJson(key),
-      'signingKey': simplePublicKeyToJson(signingKey),
-    };
+    return {'key': key.toJson(), 'signingKey': signingKey.toJson()};
   }
 
   factory IdentityKey.fromJson(Map<String, dynamic> json) {
     return IdentityKey(
-      simplePublicKeyFromJson(json['key']),
-      simplePublicKeyFromJson(json['signingKey']),
+      SimplePublicKeyJson.fromJson(json['key']),
+      SimplePublicKeyJson.fromJson(json['signingKey']),
     );
   }
 
