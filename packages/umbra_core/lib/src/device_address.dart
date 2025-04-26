@@ -10,10 +10,10 @@ class DeviceAddress extends Equatable {
   final String id;
 
   /// The user address denoting the owner of this device.
-  final UserAddress userAddress;
+  final UserAddress user;
 
   /// The constructor for the [DeviceAddress] class.
-  DeviceAddress({required this.id, required this.userAddress}) {
+  DeviceAddress({required this.id, required this.user}) {
     if (id.length != 16) {
       throw ArgumentError('Device identifier must be 16 characters long');
     }
@@ -21,28 +21,23 @@ class DeviceAddress extends Equatable {
 
   /// Creates a new [DeviceAddress] for the given user address.
   factory DeviceAddress.newForUser(UserAddress userAddress) {
-    return DeviceAddress(
-      id: IdGenerator.generate(16),
-      userAddress: userAddress,
-    );
+    return DeviceAddress(id: IdGenerator.generate(16), user: userAddress);
   }
 
   /// Returns this device address as a Umbra Device URI.
-  String toUri() => "umbra://${userAddress.address}/dev/$id";
+  String toUri() => "umbra://${user.address}/dev/$id";
 
   Map<String, dynamic> toJson() {
-    return {'id': id, 'userAddress': userAddress.toJson()};
+    return {'id': id, 'user': user.toJson()};
   }
 
   factory DeviceAddress.fromJson(Map<String, dynamic> json) {
     return DeviceAddress(
       id: json['id'] as String,
-      userAddress: UserAddress.fromJson(
-        json['userAddress'] as Map<String, dynamic>,
-      ),
+      user: UserAddress.fromJson(json['user'] as Map<String, dynamic>),
     );
   }
 
   @override
-  List<Object?> get props => [id, userAddress];
+  List<Object?> get props => [id, user];
 }

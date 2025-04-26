@@ -15,7 +15,7 @@ class SignatureService {
   Future<List<int>> sign(List<int> message, IdentityKeyPair identityKey) async {
     final signature = await _ed25519.sign(
       message,
-      keyPair: identityKey.signingKeyPair,
+      keyPair: identityKey.signingKey,
     );
 
     return signature.bytes;

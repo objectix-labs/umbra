@@ -25,7 +25,7 @@ class KeyExchangeService {
     IdentityKey otherKey,
   ) async {
     return _x25519.sharedSecretKey(
-      keyPair: myKeyPair.keyPair,
+      keyPair: myKeyPair.key,
       remotePublicKey: otherKey.key,
     );
   }
