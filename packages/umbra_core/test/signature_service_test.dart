@@ -10,7 +10,9 @@ void main() {
   late IdentityKey identityKey;
 
   setUp(() async {
-    identityKeyPair = await identityKeyGenerator.generate();
+    final alice = UserAddress(email: 'alice@example.com', displayName: 'Alice');
+    final deviceAlice = DeviceAddress.newForUser(alice);
+    identityKeyPair = await identityKeyGenerator.generate(deviceAlice);
     identityKey = await identityKeyPair.identityKey;
   });
 

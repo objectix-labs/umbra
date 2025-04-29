@@ -6,4 +6,9 @@ packages:
 
 scripts:
   analyze:
-    exec: dart analyze .
+    exec: flutter analyze .
+    description: "Run flutter analyze"
+  test:
+    exec: flutter test
+    no-select: true
+    description: "Run flutter test"

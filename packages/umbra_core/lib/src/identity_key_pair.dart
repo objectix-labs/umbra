@@ -6,20 +6,27 @@ import 'package:umbra_core/umbra_core.dart';
 /// and a signing key pair. The DH key pair is used for secure communication,
 /// while the signing key pair is used for authentication.
 class IdentityKeyPair extends Equatable {
+  /// The device address that identifies the device associated with this key.
+  final DeviceAddress device;
+
   /// Diffie-Hellman key pair used for secure communication.
-  final SimpleKeyPair keyPair;
+  final SimpleKeyPair key;
 
   /// Signing key pair used for authentication.
-  final SimpleKeyPair signingKeyPair;
+  final SimpleKeyPair signingKey;
 
-  const IdentityKeyPair(this.keyPair, this.signingKeyPair);
+  const IdentityKeyPair({
+    required this.device,
+    required this.key,
+    required this.signingKey,
+  });
 
   Future<IdentityKey> get identityKey async {
-    final pubKey = await keyPair.extractPublicKey();
-    final signingPubKey = await signingKeyPair.extractPublicKey();
-    return IdentityKey(pubKey, signingPubKey);
+    final pubKey = await key.extractPublicKey();
+    final signingPubKey = await signingKey.extractPublicKey();
+    return IdentityKey(device: device, key: pubKey, signingKey: signingPubKey);
   }
 
   @override
-  List<Object> get props => [keyPair, signingKeyPair];
+  List<Object> get props => [device, key, signingKey];
 }

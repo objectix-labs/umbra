@@ -1,5 +1,4 @@
 import 'package:cryptography_plus/cryptography_plus.dart';
-import "cipher_key.dart";
 import "identity_key.dart";
 import "identity_key_pair.dart";
 
@@ -7,29 +6,27 @@ import "identity_key_pair.dart";
 /// a remote identity key.
 ///
 /// This service uses the Diffie-Hellman algorithm over Curve25519 to derive a
-/// shared key for secure communication between tweo entities represeted by
+/// shared key for secure communication between two entities represented by
 /// the given identity keys.
 class KeyExchangeService {
   final X25519 _x25519 = X25519();
 
   KeyExchangeService();
 
-  /// Dervices a shared key with a remote identity key using a local identity
+  /// Devices a shared key with a remote identity key using a local identity
   /// key pair.
   ///
   /// The [myKeyPair] parameter is the local identity key pair, and the
   /// [otherKey] parameter is the remote identity key.
   ///
   /// Returns a [CipherKey] representing the shared key.
-  Future<CipherKey> exchange(
+  Future<SecretKey> exchange(
     IdentityKeyPair myKeyPair,
     IdentityKey otherKey,
   ) async {
-    final key = await _x25519.sharedSecretKey(
-      keyPair: myKeyPair.keyPair,
+    return _x25519.sharedSecretKey(
+      keyPair: myKeyPair.key,
       remotePublicKey: otherKey.key,
     );
-
-    return CipherKey(key);
   }
 }

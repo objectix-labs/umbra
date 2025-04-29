@@ -2,6 +2,7 @@ name: umbra_core
 description: "Umbra Core Library"
 version: 0.0.1
 homepage: https://github.com/objectix-labs/umbra
+publish_to: none # Remove this line if you wish to publish to pub.dev
 
 environment:
   sdk: ^3.7.2
@@ -19,6 +20,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^5.0.0
+
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

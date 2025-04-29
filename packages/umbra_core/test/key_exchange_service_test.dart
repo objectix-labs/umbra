@@ -10,8 +10,12 @@ void main() {
   late IdentityKeyPair identityKeyPairBob;
 
   setUp(() async {
-    identityKeyPairAlice = await identityKeyGenerator.generate();
-    identityKeyPairBob = await identityKeyGenerator.generate();
+    final alice = UserAddress(email: 'alice@example.com', displayName: 'Alice');
+    final bob = UserAddress(email: 'bob@example.com', displayName: 'Bob');
+    final deviceAlice = DeviceAddress.newForUser(alice);
+    final deviceBob = DeviceAddress.newForUser(bob);
+    identityKeyPairAlice = await identityKeyGenerator.generate(deviceAlice);
+    identityKeyPairBob = await identityKeyGenerator.generate(deviceBob);
   });
 
   test('key exchangee service correctly exchanges key', () async {

@@ -8,12 +8,10 @@ class UserAddress extends Equatable {
 
   /// Optional name of the user.
   /// This is the name of the user, which can be used for display purposes.
-  /// It is optional and can be null.
-  /// If not provided, the address will be used as the display name.
   final String? name;
 
-  UserAddress(String emailAddress, {String? displayName})
-    : address = emailAddress.trim().toLowerCase(),
+  UserAddress({required String email, String? displayName})
+    : address = email.trim().toLowerCase(),
       name = displayName?.trim() {
     if (address.isEmpty) {
       throw ArgumentError('Address cannot be empty');
@@ -24,8 +22,24 @@ class UserAddress extends Equatable {
     }
   }
 
+  Map<String, dynamic> toJson() {
+    return {'address': address, 'name': name};
+  }
+
+  factory UserAddress.fromJson(Map<String, dynamic> json) {
+    return UserAddress(
+      email: json['address'] as String,
+      displayName: json['name'] as String?,
+    );
+  }
+
   @override
-  String toString() => name != null ? "$address <$name>" : address;
+  String toString() {
+    if (name != null && name!.isNotEmpty) {
+      return "$address <$name>";
+    }
+    return address;
+  }
 
   @override
   List<Object?> get props => [address, name];

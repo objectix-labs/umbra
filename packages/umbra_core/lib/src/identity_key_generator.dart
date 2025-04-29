@@ -1,5 +1,5 @@
 import 'package:cryptography_plus/cryptography_plus.dart';
-import "identity_key_pair.dart";
+import 'package:umbra_core/umbra_core.dart';
 
 /// Generates identity key pairs for secure communication and authentication.
 class IdentityKeyGenerator {
@@ -9,7 +9,7 @@ class IdentityKeyGenerator {
   /// Generates a new identity key pair.
   ///
   /// Returns a [IdentityKeyPair] containing the generated key pair.
-  Future<IdentityKeyPair> generate() async {
+  Future<IdentityKeyPair> generate(DeviceAddress device) async {
     // Generate a new X25519 key pair for the DH key
     final dhKeyPair = await _x25519.newKeyPair();
 
@@ -17,6 +17,10 @@ class IdentityKeyGenerator {
     final signingKeyPair = await _ed25519.newKeyPair();
 
     // Return the generated identity key pair
-    return IdentityKeyPair(dhKeyPair, signingKeyPair);
+    return IdentityKeyPair(
+      device: device,
+      key: dhKeyPair,
+      signingKey: signingKeyPair,
+    );
   }
 }
