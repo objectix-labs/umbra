@@ -1,4 +1,4 @@
-name: Umbra Automated Tests
+name: CI Build
 
 on:
   push:
