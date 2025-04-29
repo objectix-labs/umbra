@@ -6,14 +6,14 @@ import "identity_key_pair.dart";
 /// a remote identity key.
 ///
 /// This service uses the Diffie-Hellman algorithm over Curve25519 to derive a
-/// shared key for secure communication between tweo entities represeted by
+/// shared key for secure communication between two entities represented by
 /// the given identity keys.
 class KeyExchangeService {
   final X25519 _x25519 = X25519();
 
   KeyExchangeService();
 
-  /// Dervices a shared key with a remote identity key using a local identity
+  /// Devices a shared key with a remote identity key using a local identity
   /// key pair.
   ///
   /// The [myKeyPair] parameter is the local identity key pair, and the
